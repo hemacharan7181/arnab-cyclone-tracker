@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070a1a" />
+    <meta name="description" content="ARNAB is a premium cyclone awareness and visualization prototype for the Bay of Bengal." />
+    <title>ARNAB / Cyclone intelligence</title>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.114.0/Widgets/widgets.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="ARNAB home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span><strong>ARNAB</strong><small>cyclone intelligence</small></span>
+        </a>
+        <div class="topbar-actions">
+          <span class="mode-pill"><i></i> SIMULATION MODE</span>
+          <a class="text-link" href="https://mausam.imd.gov.in/" target="_blank" rel="noreferrer">Official sources <span aria-hidden="true">↗</span></a>
+          <button class="icon-button" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="pulse-dot"></span> BAY OF BENGAL / SITUATIONAL AWARENESS</p>
+            <h1>See the system.<br /><em>Prepare with clarity.</em></h1>
+            <p class="hero-lede">A calm, visual briefing layer for cyclone movement, official warnings and community readiness.</p>
+            <div class="hero-meta"><span>○</span> Demo environment <b>·</b> No live feed connected</div>
+          </div>
+          <div class="hero-mark" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-glow"></div><span>ANALYSE<br />EARLY</span></div>
+        </section>
+
+        <section class="status-grid" aria-label="Cyclone status summary">
+          <article class="metric-card status-card">
+            <div class="card-label">CURRENT SYSTEM <span class="status-tag">DEMO</span></div>
+            <div class="system-name">No active system</div>
+            <p>Awaiting verified IMD feed connection</p>
+            <div class="card-foot"><span class="signal-bars"><i></i><i></i><i></i><i></i></span> STATUS UNCONFIRMED</div>
+          </article>
+          <article class="metric-card">
+            <div class="card-label">LAST VERIFIED OBSERVATION <span class="info-dot" title="No observation is loaded">i</span></div>
+            <div class="metric-value muted-value">—</div>
+            <p>Live feed not connected</p>
+            <div class="card-foot">SOURCE REQUIRED <span>IMD</span></div>
+          </article>
+          <article class="metric-card">
+            <div class="card-label">POSITION</div>
+            <div class="metric-value muted-value">—° N <small>·</small> —° E</div>
+            <p>Observed coordinates unavailable</p>
+            <div class="card-foot">NO VERIFIED FIX</div>
+          </article>
+          <article class="metric-card accent-card">
+            <div class="card-label">WIND SPEED</div>
+            <div class="metric-value">— <small>km/h</small></div>
+            <p>Intensity not reported</p>
+            <div class="card-foot">NOT A FORECAST <span>↗</span></div>
+          </article>
+        </section>
+
+        <div class="notice-banner"><span class="notice-icon">!</span><p><strong>DEMO DATA / LIVE FEED NOT CONNECTED</strong> — The map geometry is a visual simulation for interface testing. It must not be used for travel, evacuation or safety decisions.</p><a href="#sources">Data &amp; methodology</a></div>
+
+        <section class="workspace-grid">
+          <div class="map-panel panel">
+            <div class="panel-header">
+              <div><p class="eyebrow">TRACKING VIEW</p><h2>Bay of Bengal <span>·</span> India</h2></div>
+              <div class="map-controls"><button class="map-control active" data-layer="all">All layers</button><button class="map-control" data-layer="observed">Observed</button><button class="map-control" data-layer="forecast">Forecast</button><button class="map-control" data-layer="warnings">Warnings</button></div>
+            </div>
+            <div id="cesiumContainer" aria-label="Interactive 3D globe showing a simulated Bay of Bengal track"><span class="simulation-badge">SIMULATION ONLY</span></div>
+            <div class="map-legend">
+              <span><i class="legend-line observed"></i> Observed (simulated)</span><span><i class="legend-line forecast"></i> Forecast (simulated)</span><span><i class="legend-area"></i> Uncertainty corridor</span><span><i class="legend-warning"></i> Warning areas (when connected)</span>
+            </div>
+            <div class="map-attribution">Visual simulation only <b>·</b> Esri World Imagery <b>·</b> imagery subject to provider terms</div>
+          </div>
+          <aside class="side-stack">
+            <article class="panel movement-card">
+              <div class="panel-header compact"><div><p class="eyebrow">FORECAST MOVEMENT</p><h2>Not available</h2></div><span class="forecast-icon">↗</span></div>
+              <div class="movement-placeholder"><span>—</span><p>Connect an official forecast source to display movement guidance.</p></div>
+              <div class="forecast-key"><span>Forecast points</span><strong>—</strong><span>Confidence</span><strong>—</strong></div>
+            </article>
+            <article class="panel source-card" id="sources">
+              <div class="panel-header compact"><div><p class="eyebrow">OFFICIAL SIGNALS</p><h2>Where to verify</h2></div><span class="external-icon">↗</span></div>
+              <a class="source-row" href="https://mausam.imd.gov.in/" target="_blank" rel="noreferrer"><span class="source-logo imd">IMD</span><span><strong>India Meteorological Department</strong><small>Bulletins &amp; official warnings</small></span><span>↗</span></a>
+              <a class="source-row" href="https://apsdma.ap.gov.in/" target="_blank" rel="noreferrer"><span class="source-logo aps">AP</span><span><strong>APSDMA</strong><small>State alerts &amp; preparedness</small></span><span>↗</span></a>
+              <a class="source-row" href="https://apsdmagis.ap.gov.in/weather-watch/cyclone.html" target="_blank" rel="noreferrer"><span class="source-logo gis">GIS</span><span><strong>APSDMA weather watch</strong><small>District-level situational view</small></span><span>↗</span></a>
+            </article>
+          </aside>
+        </section>
+
+        <section class="lower-grid">
+          <article class="panel bulletin-panel">
+            <div class="panel-header"><div><p class="eyebrow">OFFICIAL BULLETINS</p><h2>Latest from the authorities</h2></div><a class="outline-button" href="https://mausam.imd.gov.in/" target="_blank" rel="noreferrer">Open IMD <span>↗</span></a></div>
+            <div class="empty-state"><div class="empty-icon">◌</div><h3>No bulletins loaded</h3><p>Live bulletin ingestion is not configured. Always use the official IMD and APSDMA channels for current advice.</p></div>
+            <div class="timestamp">UI STATE CHECKED <time id="uiTimestamp"></time></div>
+          </article>
+          <article class="panel safety-panel">
+            <div class="panel-header"><div><p class="eyebrow">READY WHEN IT MATTERS</p><h2>Safety essentials</h2></div><span class="shield-icon">✦</span></div>
+            <div class="safety-list"><div><span>01</span><p><strong>Follow official advice</strong><small>Use IMD, APSDMA and local administration updates.</small></p></div><div><span>02</span><p><strong>Keep a go-bag ready</strong><small>Water, medicines, torch, documents and power bank.</small></p></div><div><span>03</span><p><strong>Never cross floodwater</strong><small>Move to a safe place only when directed by authorities.</small></p></div></div>
+            <a class="safety-link" href="https://apsdma.ap.gov.in/" target="_blank" rel="noreferrer">Read official preparedness guidance <span>↗</span></a>
+          </article>
+        </section>
+      </main>
+      <footer><span>ARNAB <b>·</b> VISUAL BRIEFING PROTOTYPE</span><span>Not an official government website <b>·</b> <a href="README.md">About this project</a></span></footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.114.0/Cesium.js"></script>
+    <script src="data-service.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
